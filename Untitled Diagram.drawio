@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-24T00:52:37.160Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15" etag="jsK1gZye_alauRtOvk0G" version="14.8.0" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-24T00:55:10.727Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15" etag="JopC44J_yluccAJQFJH_" version="14.8.0" type="github">
   <diagram name="Page-1" id="74e2e168-ea6b-b213-b513-2b3c1d86103e">
     <mxGraphModel dx="1036" dy="1585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -36,7 +36,7 @@
           <mxGeometry x="30" y="65" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="77e6c97f196da883-23" value="输出到display" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-3" vertex="1">
-          <mxGeometry x="30" y="650" width="100" height="60" as="geometry" />
+          <mxGeometry x="30" y="620" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="77e6c97f196da883-4" value="gstomx/ffmpeg" style="swimlane;html=1;startSize=20;" parent="77e6c97f196da883-1" vertex="1">
           <mxGeometry x="330" y="20" width="160" height="730" as="geometry" />
@@ -44,11 +44,14 @@
         <mxCell id="77e6c97f196da883-9" value="向omx申请buffer(BstrBuf、PictBuf)" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-4" vertex="1">
           <mxGeometry x="30" y="125" width="100" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="NEodAw-vATcQsWl_NQA6-4" value="拷贝数据到buffer，然后提交" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-4" vertex="1">
+        <mxCell id="NEodAw-vATcQsWl_NQA6-4" value="拷贝数据到buffer，发起OMX_EmptyThisBuffer" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-4" vertex="1">
           <mxGeometry x="30" y="250" width="100" height="60" as="geometry" />
         </mxCell>
         <mxCell id="77e6c97f196da883-19" value="提交解码完数据" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-4" vertex="1">
-          <mxGeometry x="35" y="580" width="90" height="60" as="geometry" />
+          <mxGeometry x="30" y="540" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="yOjiqAX6zCisSnx89uOd-18" value="PictBuf回收，并发起OMX_FillThisBuffer" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" vertex="1" parent="77e6c97f196da883-4">
+          <mxGeometry x="30" y="660" width="90" height="60" as="geometry" />
         </mxCell>
         <mxCell id="77e6c97f196da883-5" value="omx" style="swimlane;html=1;startSize=20;" parent="77e6c97f196da883-1" vertex="1">
           <mxGeometry x="490" y="20" width="160" height="730" as="geometry" />
@@ -60,7 +63,7 @@
           <mxGeometry x="40" y="122.5" width="80" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOjiqAX6zCisSnx89uOd-1" value="是否可以送显?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="77e6c97f196da883-5">
-          <mxGeometry x="40" y="500" width="80" height="80" as="geometry" />
+          <mxGeometry x="40" y="490" width="80" height="80" as="geometry" />
         </mxCell>
         <mxCell id="yOjiqAX6zCisSnx89uOd-2" value="是" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="77e6c97f196da883-5">
           <mxGeometry x="20" y="585" width="30" height="20" as="geometry" />
@@ -110,19 +113,11 @@
         <mxCell id="yOjiqAX6zCisSnx89uOd-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="77e6c97f196da883-1" source="77e6c97f196da883-19" target="77e6c97f196da883-23">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="yOjiqAX6zCisSnx89uOd-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.408;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="77e6c97f196da883-1" source="77e6c97f196da883-23" target="77e6c97f196da883-12">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="790" y="700" />
-              <mxPoint x="790" y="167" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
         <mxCell id="yOjiqAX6zCisSnx89uOd-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="77e6c97f196da883-1" source="77e6c97f196da883-21" target="yOjiqAX6zCisSnx89uOd-8">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="yOjiqAX6zCisSnx89uOd-6" value="释放PictBuf" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;" vertex="1" parent="1">
-          <mxGeometry x="610" y="500" width="80" height="20" as="geometry" />
+        <mxCell id="yOjiqAX6zCisSnx89uOd-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="77e6c97f196da883-1" source="77e6c97f196da883-23" target="yOjiqAX6zCisSnx89uOd-18">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
