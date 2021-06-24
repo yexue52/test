@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-06-24T00:49:36.758Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15" etag="WF5vfYAizjkQhl41kWK3" version="14.8.0" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-24T00:50:29.330Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Safari/605.1.15" etag="sXv8zihN2p1pNvMzgDTf" version="14.8.0" type="github">
   <diagram name="Page-1" id="74e2e168-ea6b-b213-b513-2b3c1d86103e">
     <mxGraphModel dx="1036" dy="1585" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" background="none" math="0" shadow="0">
       <root>
@@ -56,7 +56,7 @@
         <mxCell id="77e6c97f196da883-15" value="omx提交解码请求" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-5" vertex="1">
           <mxGeometry x="30" y="250" width="100" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="77e6c97f196da883-12" value="omx申请buffer并map" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-5" vertex="1">
+        <mxCell id="77e6c97f196da883-12" value="从pool中申请buffer" style="rounded=1;whiteSpace=wrap;html=1;shadow=0;labelBackgroundColor=none;strokeWidth=1;fontFamily=Verdana;fontSize=8;align=center;" parent="77e6c97f196da883-5" vertex="1">
           <mxGeometry x="40" y="122.5" width="80" height="60" as="geometry" />
         </mxCell>
         <mxCell id="yOjiqAX6zCisSnx89uOd-1" value="是否可以送显?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="77e6c97f196da883-5">
